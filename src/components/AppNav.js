@@ -15,7 +15,7 @@ function AppNav() {
 
 
     return (
-        <Drawer variant="permanent" open>
+        <Drawer variant="permanent" open >
             <List>
                 {/* Sección Seguridad */}
                 <ListItem button onClick={() => setOpenSeguridad(!openSeguridad)}>

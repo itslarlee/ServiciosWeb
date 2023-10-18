@@ -13,6 +13,29 @@ import ConsultaPuertas from '../pages/ConsultaPuertas';
 import Paises from '../pages/Paises';
 import Aerolineas from '../pages/Aerolineas';
 import PuertasAeropuerto from '../pages/PuertasAeropuerto';
+import { Card, CardContent, Grid } from '@mui/material';
+import Consecutivos from '../pages/Consecutivos';
+import Header from '../components/Header';
+import styled from '@emotion/styled';
+
+export const MainContainer = styled.div`
+  display: flex;
+  height: 100vh;
+`;
+
+export const MainContent = styled.div`
+  flex-grow: 1;
+  width: 100%;
+`;
+
+export const StyledCard = styled.div`
+  margin-top: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
+  padding: 24px;
+  /* ...otros estilos que necesites para tu Card... */
+`;
+
 
 const AuthElement = ({ children, roles }) => {
     const { user } = useIdentity();
@@ -24,14 +47,35 @@ const AuthElement = ({ children, roles }) => {
 
 function MainLayout({ children }) {
     return (
-        <div style={{ display: 'flex' }}>
-            <AppNav />
-            <div style={{ marginLeft: 240, flexGrow: 1 }}>
-                {children}
-            </div>
-        </div>
+        <Grid container style={{ height: '100vh' }}>
+            <Grid item xs={1.5}>
+                <AppNav />
+            </Grid>
+            <Grid item xs={10.5} container direction="column">
+                <Grid item>
+                    <Header />
+                </Grid>
+                <Grid item xs container>
+                    <Card
+                        sx={{
+                            mt: 2,
+                            mr: 2,
+                            mb: 2,
+                            p: 3,
+                            width: '100%',
+                            height: '100%',
+                        }}
+                    >
+                        <CardContent>
+                            {children}
+                        </CardContent>
+                    </Card>
+                </Grid>
+            </Grid>
+        </Grid>
     );
 }
+
 
 function RouteProvider() {
     return (
@@ -71,7 +115,7 @@ function RouteProvider() {
                 element={
                     <AuthElement roles={['Administrador', 'Consecutivo', 'Mantenimiento']}>
                         <MainLayout>
-                            <Outlet />
+                            <Consecutivos />
                         </MainLayout>
                     </AuthElement>
                 }

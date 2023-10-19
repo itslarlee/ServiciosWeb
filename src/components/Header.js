@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { Breadcrumbs, Link, Typography, Button } from '@mui/material';
+import { Breadcrumbs, Link, Typography, Button, Box } from '@mui/material';
 import { useIdentity } from '../providers/IdentityProvider';
 
 function Header() {
@@ -13,7 +13,6 @@ function Header() {
         navigate('/signin');
     };
 
-    // Crear breadcrumbs a partir de la ubicación actual
     const createBreadcrumbs = () => {
         const paths = location.pathname.split('/').filter(Boolean);
         return paths.map((path, index) => (
@@ -30,9 +29,11 @@ function Header() {
 
     return (
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 16px', background: '#f5f5f5', boxShadow: '0 2px 4px rgba(0,0,0,0.1)' }}>
+
             <Breadcrumbs aria-label="breadcrumb">
                 {createBreadcrumbs()}
             </Breadcrumbs>
+
 
             <Typography variant="h6">
                 Bienvenido, {user ? user.name : 'Usuario'}

@@ -17,6 +17,9 @@ import { Card, CardContent, Grid } from '@mui/material';
 import Consecutivos from '../pages/Consecutivos';
 import Header from '../components/Header';
 import styled from '@emotion/styled';
+import Bitacoras from '../pages/Bitacoras';
+import LoginPage from '../pages/LoginPage';
+import RegisterPage from '../pages/RegisterPage';
 
 export const MainContainer = styled.div`
   display: flex;
@@ -48,10 +51,10 @@ const AuthElement = ({ children, roles }) => {
 function MainLayout({ children }) {
     return (
         <Grid container style={{ height: '100vh' }}>
-            <Grid item xs={1.5}>
+            <Grid item xs={2}>
                 <AppNav />
             </Grid>
-            <Grid item xs={10.5} container direction="column">
+            <Grid item xs={10} container direction="column">
                 <Grid item>
                     <Header />
                 </Grid>
@@ -81,6 +84,8 @@ function RouteProvider() {
     return (
         <Routes>
             <Route path="/" element={<MainLayout><Outlet /></MainLayout>} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/signup" element={<RegisterPage />} />
             <Route
                 path="/seguridad/usuarios"
                 element={
@@ -91,8 +96,8 @@ function RouteProvider() {
                     </AuthElement>
                 }
             >
-                <Route index element={<Navigate to="crear" />} />
-                <Route path="crear" element={<CrearUsuarios />} />
+                <Route index element={<Navigate to="crear-usuario" />} />
+                <Route path="crear-usuario" element={<CrearUsuarios />} />
                 <Route path="asignar-roles" element={<AsignarRoles />} />
             </Route>
 
@@ -134,6 +139,7 @@ function RouteProvider() {
                 <Route path="paises" element={<Paises />} />
                 <Route path="aerolineas" element={<Aerolineas />} />
                 <Route path="puertas" element={<PuertasAeropuerto />} />
+                <Route path="bitacoras" element={<Bitacoras />} />
             </Route>
 
             <Route

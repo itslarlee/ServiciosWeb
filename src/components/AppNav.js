@@ -36,7 +36,7 @@ function AppNav() {
 
                         <Collapse in={openUsuarios} timeout="auto" unmountOnExit>
                             <List component="div" disablePadding>
-                                <ListItem button component={Link} to="/seguridad/usuarios/crear" style={{ paddingLeft: 64 }}>
+                                <ListItem button component={Link} to="/seguridad/usuarios/crear-usuario" style={{ paddingLeft: 64 }}>
                                     <ListItemText primary="Crear Usuarios" />
                                 </ListItem>
                                 <ListItem button component={Link} to="/seguridad/usuarios/asignar-roles" style={{ paddingLeft: 64 }}>
@@ -75,6 +75,9 @@ function AppNav() {
                         </ListItem>
                         <ListItem button component={Link} to="/administracion/puertas" style={{ paddingLeft: 32 }}>
                             <ListItemText primary="Puertas" />
+                        </ListItem>
+                        <ListItem button component={Link} to="/administracion/bitacoras" style={{ paddingLeft: 32 }}>
+                            <ListItemText primary="Bitacoras" />
                         </ListItem>
                     </List>
                 </Collapse>
